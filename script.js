@@ -1,5 +1,5 @@
 // importing books from books.json file 
-import DefaultBooks from './books.json' ;
+import DefaultBooks from './books.json' assert {type: 'json'};
 const BooksListsl = document.getElementById('Books-lists');
 
 //if local storage is empty then default books will store in local storage with key as books
@@ -61,12 +61,12 @@ document.querySelectorAll('remove-btn').forEach(removeBtn => {
 
 //getting value from the UI
 document.getElementById('add-book').addEventListener('click', () => {
-  const title = document.getElementById('title').value
-  const author = document.getElementById('author').value
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
   const id = BooksArray.length
-  console.log(id)
-  AddBookToDom(title, author, id)
-  AddBookToStorage(title, author, id)
+  //console.log(id)
+  AddBookToDom(title, author, id);
+  AddBookToStorage(title, author, id);
 })
 
 createList();
