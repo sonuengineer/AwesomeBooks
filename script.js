@@ -1,8 +1,7 @@
-// importing books from books.json file 
 /* eslint-disable */
 import DefaultBooks from './books.json' assert {type: 'json'};
 const BooksListsl = document.getElementById('Books-lists');
-
+/* eslint-enable */
 //if local storage is empty then default books will store in local storage with key as books
 // which is store in books.json
 if (localStorage.getItem('books') === null) {
