@@ -20,9 +20,9 @@
 
 ## 👤 Author1
 
-- GitHub: [aonuengineer](https://github.com/sonuengineer)
-- Twitter:[@aonuengineer](https://www.twitter.com/)
-- LinkedIn: [aonuengineer](https://www.linkedin.com/in/)
+- GitHub: [sonuengineer](https://github.com/sonuengineer)
+- Twitter:[@sonuengineer](https://www.twitter.com/)
+- LinkedIn: [sonuengineer](https://www.linkedin.com/in/)
 
 ## 👤 Author2
 
