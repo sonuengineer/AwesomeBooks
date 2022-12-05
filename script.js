@@ -1,5 +1,5 @@
 // importing books from books.json file 
-import DefaultBooks from './books.json' assert {type: 'json'};
+import DefaultBooks from './books.json' ;
 const BooksListsl = document.getElementById('Books-lists');
 
 //if local storage is empty then default books will store in local storage with key as books
