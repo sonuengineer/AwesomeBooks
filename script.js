@@ -1,4 +1,5 @@
 // importing books from books.json file 
+/* eslint-disable */
 import DefaultBooks from './books.json' assert {type: 'json'};
 const BooksListsl = document.getElementById('Books-lists');
 
