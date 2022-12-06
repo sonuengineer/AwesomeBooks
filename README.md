@@ -24,11 +24,11 @@
 - Twitter:[@sonuengineer](https://www.twitter.com/)
 - LinkedIn: [sonuengineer](https://www.linkedin.com/in/)
 
-## 👤 Author2
+-👤 **Shoaib Qureshi**
 
-- GitHub: [](https://github.com/)
-- Twitter: [](https://twitter.com/)
-- LinkedIn: [](https://www.linkedin.com//)
+- GitHub: [@githubhandle](https://github.com/shobeee)
+- Twitter: [@twitterhandle](https://twitter.com/xfitness_x)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/m/in/xfitness-x-784212244)
 
 # 🤝 Contributing
 - Contributions, issues, and feature requests are welcome!
