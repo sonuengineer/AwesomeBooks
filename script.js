@@ -24,7 +24,7 @@ if (BooksArray === null || BooksArray.length === 0) {
 
 // Logic for removing data from local storage
 const remove = (RemovedBooks) => {
-  BooksArray = BooksArray.filter((book) => book.id !== RemovedBooks.id);
+  BooksArray = BooksArray.filter((book) => book.id !== parseInt(RemovedBooks.id));
   localStorage.setItem('books', JSON.stringify(BooksArray));
   BooksListsl.removeChild(RemovedBooks);
 };
