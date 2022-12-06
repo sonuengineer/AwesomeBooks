@@ -1,16 +1,25 @@
-/* eslint-disable */
-import DefaultBooks from './books.json' assert {type: 'json'};
-const BooksListsl = document.getElementById('Books-lists');
-/* eslint-enable */
-//if local storage is empty then default books will store in local storage with key as books
-// which is store in books.json
-if (localStorage.getItem('books') === null) {
-  localStorage.setItem('books', JSON.stringify(DefaultBooks))
-}
-
-
+const DefaultBooks=[
+  {
+    "id": 0,
+    "title": "JavaScript",
+    "author": "Brenden Eich"
+  },
+  {
+    "id": 1,
+    "title": "HTML/CSS",
+    "author": "HÃ¥kon Wium Lie"
+  }
+]
 // //converting json value into object using parse
 let BooksArray= JSON.parse(localStorage.getItem('books'));
+const BooksListsl = document.getElementById('Books-lists');
+
+//if local storage is empty then default books will store in local storage with key as books
+// which is store in books.json
+if (BooksArray === null || BooksArray.length===0) {
+  localStorage.setItem('books', JSON.stringify(DefaultBooks))
+  BooksArray=DefaultBooks;
+}
 
 //Logic for removing data from local storage
 const remove = (RemovedBooks) => {
