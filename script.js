@@ -1,22 +1,24 @@
-const DefaultBooks=[
+const DefaultBooks = [
   {
-    "id": 0,
-    "title": "JavaScript",
-    "author": "Brenden Eich"
+    'id': 0,
+    'title': 'JavaScript',
+    'author': 'Brenden Eich'
   },
   {
-    "id": 1,
-    "title": "HTML/CSS",
-    "author": "HÃ¥kon Wium Lie"
+    'id': 1,
+    'title': 'HTML/CSS',
+    'author': 'HÃ¥kon Wium Lie'
   }
 ]
+
 // //converting json value into object using parse
-let BooksArray= JSON.parse(localStorage.getItem('books'));
+let BooksArray = JSON.parse(localStorage.getItem('books'));
+
 const BooksListsl = document.getElementById('Books-lists');
 
 //if local storage is empty then default books will store in local storage with key as books
 // which is store in books.json
-if (BooksArray === null || BooksArray.length===0) {
+if (BooksArray === null || BooksArray.length === 0) {
   localStorage.setItem('books', JSON.stringify(DefaultBooks))
   BooksArray=DefaultBooks;
 }
@@ -37,7 +39,7 @@ const AddBookToStorage = (title, author,id) => {
       id: id,
     }
   )
-  localStorage.setItem('books', JSON.stringify(BooksArray))
+  localStorage.setItem('books', JSON.stringify(BooksArray));
 }
 
 
@@ -76,6 +78,6 @@ document.getElementById('add-book').addEventListener('click', () => {
   //console.log(id)
   AddBookToDom(title, author, id);
   AddBookToStorage(title, author, id);
-})
+});
 
 createList();
