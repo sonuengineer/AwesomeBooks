@@ -1,4 +1,4 @@
-/* eslint-disable max-classes-per-file, class-methods-use-this */
+/* eslint-disable class-methods-use-this */
 let ID = 0;
 // converting json value into object using parse
 let BooksArray = JSON.parse(localStorage.getItem('books'));
@@ -13,11 +13,11 @@ class Book {
   }
 
   // Logic for removing data from local storage
-  remove(thisBook) {
-    const bookIndex = Array.from(BooksListsl.children).indexOf(thisBook);
+  remove(bookToRemove) {
+    const bookIndex = Array.from(BooksListsl.children).indexOf(bookToRemove);
     BooksArray = BooksArray.filter((book) => book !== BooksArray[bookIndex]);
     localStorage.setItem('books', JSON.stringify(BooksArray));
-    BooksListsl.removeChild(thisBook);
+    BooksListsl.removeChild(bookToRemove);
     if (bookIndex !== 0 && bookIndex < BooksArray.length) {
       for (let i = bookIndex; i < BooksArray.length; i += 1) {
         if (i % 2 === 0) {
@@ -38,9 +38,9 @@ class Book {
     newBook.classList.add('book');
     newBook.setAttribute('id', this.id);
     newBook.innerHTML = `<p class="book-author">${this.title} by ${this.author}</p>`;
-    removeBtn.addEventListener('click', () => this.remove(newBook));
     newBook.appendChild(removeBtn);
     BooksListsl.appendChild(newBook);
+    removeBtn.addEventListener('click', () => this.remove(newBook));
     if (Array.from(BooksListsl.children).indexOf(newBook) % 2 === 0) {
       newBook.classList.add('pair-bg');
     } else {
