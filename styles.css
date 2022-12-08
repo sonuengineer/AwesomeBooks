@@ -1,4 +1,55 @@
-* {
-  margin: 0;
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.Books-lists {
+  list-style: none;
+  border: 2px #000 solid;
+  width: 100%;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.books {
+  list-style-type: none;
   padding: 0;
+  border: 3px solid black;
+}
+
+.pair-bg {
+  background: #fff;
+}
+
+.odd-bg {
+  background: rgb(204, 203, 203);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  gap: 10px;
+}
+
+.form input {
+  width: 30%;
+}
+
+.form #btn {
+  width: auto;
+  position: static;
+  margin-left: 170px;
 }
