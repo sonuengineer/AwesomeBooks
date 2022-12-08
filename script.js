@@ -71,13 +71,13 @@ const DefaultBooks = [
 const createList = () => {
   // if local storage is empty then default books will store in local storage with key as books
   if (BooksArray === null || BooksArray.length === 0) {
-    BooksArray = DefaultBooks
+    BooksArray = DefaultBooks;
     localStorage.setItem('books', JSON.stringify(BooksArray));
   }
   ID = BooksArray.length - 1;
   BooksArray.forEach((book) => {
-    book = new Book(book.id, book.title, book.author)
-    book.AddBookToDom()
+    book = new Book(book.id, book.title, book.author);
+    book.AddBookToDom();
   });
 };
 
@@ -86,10 +86,10 @@ document.getElementById('btn').addEventListener('click', () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const id = ID + 1;
-  const New_Books = new Book(id, title, author);
-  New_Books.AddBookToDom();
-  New_Books.AddBookToStorage()
+  const newBooks = new Book(id, title, author);
+  newBooks.AddBookToDom();
+  newBooks.AddBookToStorage();
   ID += 1;
 });
 
-createList()
+createList();
