@@ -1,4 +1,4 @@
-/* eslint-disable class-methods-use-this */
+/* eslint-disable class-methods-use-this, template-curly-spacing */
 let ID = 0;
 // converting json value into object using parse
 let BooksArray = JSON.parse(localStorage.getItem('books'));
