@@ -37,8 +37,7 @@ class Book {
     removeBtn.innerText = 'remove';
     newBook.classList.add('book');
     newBook.setAttribute('id', this.id);
-    /* eslint-disable-next-line */
-    newBook.innerHTML = `<p class="book-author">${this.title} by ${this.author}</p>`;
+    newBook.innerHTML = `<p class="book-author">"${this.title}" by ${this.author}</p>`;
     newBook.appendChild(removeBtn);
     BooksListsl.appendChild(newBook);
     removeBtn.addEventListener('click', () => this.remove(newBook));
