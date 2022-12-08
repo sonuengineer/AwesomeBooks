@@ -40,6 +40,8 @@
 - **Local Storage is used to store the data .**
 - **JavaScript object and array is used to send data from UI to local storage.**
 - **You can see it on Mobile and Desktop**
+- **clsses is asl use for sending data to ui and localstorage**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

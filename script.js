@@ -1,79 +1,93 @@
-const DefaultBooks = [
-  {
-    id: 0,
-    title: 'JavaScript',
-    author: 'Brenden Eich',
-  },
-  {
-    id: 1,
-    title: 'HTML/CSS',
-    author: 'HÃ¥kon Wium Lie',
-  },
-];
-
+/* eslint-disable class-methods-use-this */
+let ID = 0;
 // converting json value into object using parse
 let BooksArray = JSON.parse(localStorage.getItem('books'));
 const BooksListsl = document.getElementById('Books-lists');
 
-// if local storage is empty then default books will store in local storage with key as books
-// which is store in books.json
-if (BooksArray === null || BooksArray.length === 0) {
-  localStorage.setItem('books', JSON.stringify(DefaultBooks));
-  BooksArray = DefaultBooks;
+// Making class book and constructor for that as well
+class Book {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
+
+  // Logic for removing data from local storage
+  remove(bookToRemove) {
+    const bookIndex = Array.from(BooksListsl.children).indexOf(bookToRemove);
+    BooksArray = BooksArray.filter((book) => book !== BooksArray[bookIndex]);
+    localStorage.setItem('books', JSON.stringify(BooksArray));
+    BooksListsl.removeChild(bookToRemove);
+    if (bookIndex !== 0 && bookIndex < BooksArray.length) {
+      for (let i = bookIndex; i < BooksArray.length; i += 1) {
+        if (i % 2 === 0) {
+          BooksListsl.children[i].className = 'book pair-bg';
+        } else {
+          BooksListsl.children[i].className = 'book odd-bg';
+        }
+      }
+    }
+  }
+
+  // Showing books on UI interface
+  AddBookToDom() {
+    const newBook = document.createElement('li');
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-btn');
+    removeBtn.innerText = 'remove';
+    newBook.classList.add('book');
+    newBook.setAttribute('id', this.id);
+    newBook.innerHTML = `<p class="book-author">"${this.title}" by ${this.author}</p>`;
+    newBook.appendChild(removeBtn);
+    BooksListsl.appendChild(newBook);
+    removeBtn.addEventListener('click', () => this.remove(newBook));
+    if (Array.from(BooksListsl.children).indexOf(newBook) % 2 === 0) {
+      newBook.classList.add('pair-bg');
+    } else {
+      newBook.classList.add('odd-bg');
+    }
+  }
+
+  // adding books into local storage
+  AddBookToStorage() {
+    BooksArray.push({
+      id: this.id,
+      title: this.title,
+      author: this.author,
+    });
+
+    localStorage.setItem('books', JSON.stringify(BooksArray));
+  }
 }
 
-// Logic for removing data from local storage
-const remove = (RemovedBooks) => {
-  BooksArray = BooksArray.filter((book) => book.id !== parseInt(RemovedBooks.id));
-  localStorage.setItem('books', JSON.stringify(BooksArray));
-  BooksListsl.removeChild(RemovedBooks);
-};
-
-// adding books into local storage
-const AddBookToStorage = (title, author, id) => {
-  BooksArray.push(
-    {
-      title,
-      author,
-      id,
-    },
-  );
-  localStorage.setItem('books', JSON.stringify(BooksArray));
-};
-
-// Showing books on UI interface
-const AddBookToDom = (title, author, index) => {
-  const newBookEl = document.createElement('li');
-  newBookEl.classList.add('book');
-  newBookEl.setAttribute('id', index);
-  newBookEl.innerHTML = `
-  <h2 class="book-title">${title}</h2>
-  <p class="book-author">${author}</p>
-  <button class="remove-btn">remove</button><hr>
-  `;
-  newBookEl.addEventListener('click', () => remove(newBookEl));
-  BooksListsl.appendChild(newBookEl);
-};
+const DefaultBooks = [
+  new Book(0, 'JavaScript', 'Brenden Eich'),
+  new Book(1, 'HTML/CSS', 'HÃ¥kon Wium Lie'),
+];
 
 // Creating list of books
 const createList = () => {
+  // if local storage is empty then default books will store in local storage with key as books
+  if (BooksArray === null || BooksArray.length === 0) {
+    BooksArray = DefaultBooks;
+    localStorage.setItem('books', JSON.stringify(BooksArray));
+  }
+  ID = BooksArray.length - 1;
   BooksArray.forEach((book) => {
-    AddBookToDom(book.title, book.author, book.id);
+    book = new Book(book.id, book.title, book.author);
+    book.AddBookToDom();
   });
 };
 
-// Removing books from UI
-document.querySelectorAll('remove-btn').forEach((removeBtn) => {
-  removeBtn.addEventListener('click', remove(removeBtn));
-});
-
 // getting value from the UI
-document.getElementById('add-book').addEventListener('click', () => {
+document.getElementById('btn').addEventListener('click', () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
-  const id = BooksArray.length;
-  AddBookToDom(title, author, id);
-  AddBookToStorage(title, author, id);
+  const id = ID + 1;
+  const newBooks = new Book(id, title, author);
+  newBooks.AddBookToDom();
+  newBooks.AddBookToStorage();
+  ID += 1;
 });
 
 createList();
