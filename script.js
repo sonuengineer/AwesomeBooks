@@ -1,4 +1,4 @@
-/* eslint-disable class-methods-use-this, template-curly-spacing */
+/* eslint-disable class-methods-use-this */
 let ID = 0;
 // converting json value into object using parse
 let BooksArray = JSON.parse(localStorage.getItem('books'));
@@ -37,6 +37,7 @@ class Book {
     removeBtn.innerText = 'remove';
     newBook.classList.add('book');
     newBook.setAttribute('id', this.id);
+    /* eslint-disable-next-line */
     newBook.innerHTML = `<p class="book-author">${this.title} by ${this.author}</p>`;
     newBook.appendChild(removeBtn);
     BooksListsl.appendChild(newBook);
