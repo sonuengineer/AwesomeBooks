@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   min-height: 100vh;
   position: relative;
@@ -85,19 +90,24 @@ header {
 .form {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 50%;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .form input {
-  width: 30%;
+  width: 100%;
+  padding: 10px;
+}
+
+.form-title {
+  padding-bottom: 50px;
 }
 
 .form #btn {
   width: auto;
-  position: static;
-  margin-left: 170px;
+  align-self: flex-end;
+  padding: 5px 10px;
 }
 
 /* Contact */
