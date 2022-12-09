@@ -1,4 +1,4 @@
-/* eslint-disable class-methods-use-this */
+/* eslint-disable max-classes-per-file, class-methods-use-this */
 let ID = 0;
 // converting json value into object using parse
 let BooksArray = JSON.parse(localStorage.getItem('books'));
@@ -38,9 +38,9 @@ class Book {
     newBook.classList.add('book');
     newBook.setAttribute('id', this.id);
     newBook.innerHTML = `<p class="book-author">"${this.title}" by ${this.author}</p>`;
+    removeBtn.addEventListener('click', () => this.remove(newBook));
     newBook.appendChild(removeBtn);
     BooksListsl.appendChild(newBook);
-    removeBtn.addEventListener('click', () => this.remove(newBook));
     if (Array.from(BooksListsl.children).indexOf(newBook) % 2 === 0) {
       newBook.classList.add('pair-bg');
     } else {
@@ -84,10 +84,29 @@ document.getElementById('btn').addEventListener('click', () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const id = ID + 1;
-  const newBooks = new Book(id, title, author);
-  newBooks.AddBookToDom();
-  newBooks.AddBookToStorage();
+  const New = new Book(id, title, author);
+  New.AddBookToDom();
+  New.AddBookToStorage();
   ID += 1;
 });
 
+document.querySelectorAll('.nav-link').forEach((navLink) => {
+  navLink.addEventListener('click', () => {
+    if (!navLink.classList.contains('active')) {
+      document.querySelectorAll('.active').forEach((element) => {
+        element.classList.remove('active');
+      });
+      const elementId = navLink.innerHTML.toLowerCase();
+      const element = document.getElementById(elementId);
+      element.classList.add('active');
+      navLink.classList.add('active');
+    }
+  });
+});
+
 createList();
+
+document.getElementById('btn').addEventListener('click', () => {
+  /* eslint no-alert: "error" */
+  alert('Book added succesfully'); // eslint-disable-line no-alert
+});

@@ -5,22 +5,51 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awesome Books</title>
-  <link rel="stylesheet" href="./style.css"></link>
+  <link rel="stylesheet" href="./styles.css"></link>
 </head>
 <body>
 
-  <h1 class="title"> All Awesome Books</h1>
+  <header>
+    <nav class="nav-bar">
+      <h2 class="nav-title">Awesome Books</h2>
+      <ul class="links-list">
+        <li class="nav-link active">List</li>
+        <li class="nav-link middle-link">Add New</li>
+        <li class="nav-link">Contact</li>
+      </ul>
+    </nav>
+  </header>
 
-  <section class="container">
-    <ul class="books" id="Books-lists">
+  <section class="container active" id="list">
+    <h1 class="list-title">All awesome books</h1>
+    <ul class="books-list"  id="Books-lists">
     </ul>
+  </section>
+
+
+
+  <section class="container" id="add new">
     <form action="push" class="form">
-       <h2>Add a new book</h2>
-      <input type="text" name="title" id="title" placeholder="Title">
-      <input type="text" name="author" id="author" placeholder="Author">
-      <input type="button" value="Add Book" id="btn">
+      <h2 class="form-title">Add a new book</h2>
+      <input type="text" placeholder="Title" name="title" id="title">
+      <input type="text" placeholder="Author" name="author" id="author">
+      <input type="button" value="Add book" id="btn">
     </form>
   </section>
+
+  <section class="container" id="contact">
+    <h2 class="contact-title">Contact information</h2>
+    <p class="contact-description">Do you have any questions or you just want to say "Hello"? <br> You can just reach out to us!</p>
+    <ul class="contact-forms">
+      <li class="contact-form">Our e-mail email@email.com</li>
+      <li class="contact-form">Our phone number: +1 123456789</li>
+      <li class="contact-form">Our address: Streetname 1234, 85, city, Country</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="copyright">Copyright ...</p>
+  </footer>
 
 
   <script type="module" src="script.js"></script>
